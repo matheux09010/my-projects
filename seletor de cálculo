@@ -1,0 +1,103 @@
+#include <iostream>
+#include <cmath> // Para funções matemáticas como sin, cos, tan
+
+using namespace std;
+
+int main()
+{
+    float angulo, resultado;
+    char operacao, comando;
+    
+    cout << "Qual sistema usar?" << endl;
+    cout << "1. Calculadora" << endl;
+    cout << "2. Trigonometria" << endl;
+    cin >> comando;
+    
+    if (comando == '1') // Sistema de calculadora
+    {
+        float n1, n2;
+        
+        cout << "Digite um número: ";
+        cin >> n1;
+        
+        cout << "Selecione a operação:" << endl;
+        cout << "(+) Soma" << endl;
+        cout << "(-) Subtração" << endl;
+        cout << "(*) Multiplicação" << endl;
+        cout << "(/) Divisão" << endl;
+        cin >> operacao;
+        
+        cout << "Digite outro número: ";
+        cin >> n2;
+        
+        switch (operacao)
+        {
+            case '+':
+                resultado = n1 + n2;
+                break;
+            case '-':
+                resultado = n1 - n2;
+                break;
+            case '*':
+                resultado = n1 * n2;
+                break;
+            case '/':
+                if (n2 != 0)
+                {
+                    resultado = n1 / n2;
+                }
+                else
+                {
+                    cout << "Erro: divisão por zero!" << endl;
+                    return 1;
+                }
+                break;
+            default:
+                cout << "Operação inválida!" << endl;
+                return 1;
+        }
+        
+        cout << "O resultado é: " << resultado << endl;
+    }
+    else if (comando == '2') 
+    
+    {
+        cout << "Digite o ângulo em graus: ";
+        cin >> angulo;
+        
+        cout << "Selecione a operação:" << endl;
+        cout << "(s) Seno" << endl;
+        cout << "(c) Cosseno" << endl;
+        cout << "(t) Tangente" << endl;
+        cin >> operacao;
+        
+       
+        float angulo_rad = angulo * M_PI / 180.0;
+        
+        switch (operacao)
+        {
+            case 's':
+                resultado = sin(angulo_rad);
+                cout << "O seno de " << angulo << " graus é: " << resultado << endl;
+                break;
+            case 'c':
+                resultado = cos(angulo_rad);
+                cout << "O cosseno de " << angulo << " graus é: " << resultado << endl;
+                break;
+            case 't':
+                resultado = tan(angulo_rad);
+                cout << "A tangente de " << angulo << " graus é: " << resultado << endl;
+                break;
+            default:
+                cout << "Operação inválida!" << endl;
+                return 1;
+        }
+    }
+    else
+    {
+        cout << "Comando inválido!" << endl;
+        return 1;
+    }
+    
+    return 0;
+}
